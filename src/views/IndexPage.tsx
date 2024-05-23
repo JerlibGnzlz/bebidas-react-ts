@@ -1,6 +1,6 @@
 
 export const IndexPage = () => {
   return (
-    <div>indexPages</div>
+    <h1>Inicio</h1>
   )
 }
