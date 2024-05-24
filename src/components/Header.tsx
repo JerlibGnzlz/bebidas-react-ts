@@ -12,7 +12,6 @@ export const Header = () => {
 
   const fectCategories = useAppStore((state) => state.fectCategories)
 
-
   useEffect(() => {
     fectCategories()
 
