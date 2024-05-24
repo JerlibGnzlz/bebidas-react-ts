@@ -4,6 +4,7 @@ import { useAppStore } from "../stores/useAppStore";
 
 
 
+
 export const Header = () => {
 
   const { pathname } = useLocation()
@@ -11,6 +12,7 @@ export const Header = () => {
   const isHome = useMemo(() => pathname === "/", [pathname]);
 
   const fectCategories = useAppStore((state) => state.fectCategories)
+  const categories = useAppStore((state) => state.categories)
 
   useEffect(() => {
     fectCategories()
@@ -54,6 +56,13 @@ export const Header = () => {
               className="p-3 w-full rounded-lg focus:outline-none"
               name="category" >
               <option value="">-- Seleccione --</option>
+              {categories.drinks.map(category => (
+                <option
+                  key={category.strCategory}
+                  value={category.strCategory}>
+                  {category.strCategory}
+                </option>
+              ))}
             </select>
 
             <input className="cursor-pointer font-extrabold text-white bg-orange-700 hover:bg-orange-800 w-full rounded-md uppercase p-2" type="submit" value="Buscar Recetas" />
