@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useAppStore } from "../stores/useAppStore";
 
@@ -6,6 +6,12 @@ import { useAppStore } from "../stores/useAppStore";
 
 
 export const Header = () => {
+
+  const [searchFilters, setSearchFilters] = useState({
+    ingredient: "",
+    category: ""
+  });
+
 
   const { pathname } = useLocation()
 
@@ -16,9 +22,15 @@ export const Header = () => {
 
   useEffect(() => {
     fectCategories()
-
-
   }, [])
+
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
+    setSearchFilters({
+      ...searchFilters,
+      [e.target.name]: e.target.value
+    })
+  }
 
   return (
     <header className={isHome ? "bg-[url('../../public/bg.jpg')] bg-center bg-cover" : "bg-slate-800"}>
@@ -43,7 +55,14 @@ export const Header = () => {
               <label className="block text-white uppercase font-extrabold text-lg" htmlFor="ingredient">Nombre de Ingredientes</label>
             </div>
 
-            <input className="p-3 w-full rounded-lg focus:outline-none" placeholder="Nombre o Ingredientes" type="text" id="ingredient" name="ingredient" />
+            <input className="p-3 w-full rounded-lg focus:outline-none"
+              placeholder="Nombre o Ingredientes"
+              type="text"
+              id="ingredient"
+              name="ingredient"
+              onChange={handleChange}
+              value={searchFilters.ingredient}
+            />
 
 
             <div className="space-y-4">
@@ -51,10 +70,12 @@ export const Header = () => {
             </div>
 
             <select
-
-              id="category"
               className="p-3 w-full rounded-lg focus:outline-none"
-              name="category" >
+              id="category"
+              name="category"
+              onChange={handleChange}
+              value={searchFilters.category}
+            >
               <option value="">-- Seleccione --</option>
               {categories.drinks.map(category => (
                 <option
@@ -70,5 +91,6 @@ export const Header = () => {
         )}
       </div>
     </header >
-  );
-};
+  )
+}
+
