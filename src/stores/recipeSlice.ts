@@ -1,5 +1,5 @@
 import { StateCreator } from "zustand"
-import { getCategories } from "../services/RecipeServices"
+import { getCategories, getRecipes } from "../services/RecipeServices"
 import type { Categories, SerchFilter } from "../types"
 
 
@@ -21,6 +21,6 @@ export const createRecipeSlice: StateCreator<recipeSliceType> = (set) => ({
   },
 
   searchRecipes:async(filters)=>{
-console.log(filters)
+await getRecipes(filters)
   }
 })
