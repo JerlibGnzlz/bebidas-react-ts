@@ -14,23 +14,25 @@ export const IndexPage = () => {
   return (
     <>
       <h1 className="text-6xl font-extrabold">Recetas</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 my-10 gap-10">
 
-      {
-        hasDrinks ? (
-          <>
-            {drinks.drinks.map((drink) => (
-              <DrinkCard
-                key={drink.idDrink}
-                drink={drink}
-              />
-            ))}
-          </>
-        ) : (
-          <p className="my-10 text-center text-2xl">
-            No hay benidas
-          </p>
+        {
+          hasDrinks ? (
+            <>
+              {drinks.drinks.map((drink) => (
+                <DrinkCard
+                  key={drink.idDrink}
+                  drink={drink}
+                />
+              ))}
+            </>
+          ) : (
+            <p className="my-10 text-center text-2xl">
+              No hay bebidas
+            </p>
 
-        )}
+          )}
+      </div>
     </>
   )
 }
