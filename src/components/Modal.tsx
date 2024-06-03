@@ -30,6 +30,10 @@ export default function Modal() {
         return ingredientes
     }
 
+    const handleFavorite = () => {
+        console.log("desde favoritos")
+    }
+
 
     return (
         <>
@@ -76,6 +80,20 @@ export default function Modal() {
                                         Instrucciones:
                                     </DialogTitle>
                                     <p className='text-lg'> {selectedRecipe.strInstructions}</p>
+
+                                    <div className='mt-5 flex justify-between gap-4'>
+                                        <button
+                                            type='button'
+                                            className='w-full rounded-lg bg-gray-500 uppercase font-bold text-white shadow hover:bg-gray-700 py-3'
+                                            onClick={closeModal}
+                                        >Cerrar</button>
+
+                                        <button
+                                            type='button'
+                                            className=' w-full rounded-lg bg-orange-500 uppercase font-bold text-white shadow hover:bg-orange-700 py-3'
+                                            onClick={() => handleFavorite()}
+                                        >Agregar a Favoritos</button>
+                                    </div>
                                 </DialogPanel>
                             </TransitionChild>
                         </div>
