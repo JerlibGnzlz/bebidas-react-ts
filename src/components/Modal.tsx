@@ -91,7 +91,10 @@ export default function Modal() {
                                         <button
                                             type='button'
                                             className=' w-full rounded-lg bg-orange-500 uppercase font-bold text-white shadow hover:bg-orange-700 py-3'
-                                            onClick={() => handleClickFavorite(selectedRecipe)}
+                                            onClick={() => {
+                                                handleClickFavorite(selectedRecipe)
+                                                closeModal()
+                                            }}
                                         >{favoritesExist(selectedRecipe.idDrink) ? "Eliminar Favoritos" : "Agregar a Favoritos"}</button>
                                     </div>
                                 </DialogPanel>
