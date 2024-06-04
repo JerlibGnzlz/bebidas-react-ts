@@ -10,6 +10,7 @@ export default function Modal() {
     const modal = useAppStore((state) => state.modal)
     const closeModal = useAppStore((state) => state.closeModal)
     const selectedRecipe = useAppStore((state) => state.selectedRecipe)
+    const handleClickFavorite = useAppStore((state) => state.handleClickFavorite)
 
     const renderIngredients = () => {
         const ingredientes: JSX.Element[] = []
@@ -91,7 +92,7 @@ export default function Modal() {
                                         <button
                                             type='button'
                                             className=' w-full rounded-lg bg-orange-500 uppercase font-bold text-white shadow hover:bg-orange-700 py-3'
-                                            onClick={() => handleFavorite()}
+                                            onClick={() => handleClickFavorite(selectedRecipe)}
                                         >Agregar a Favoritos</button>
                                     </div>
                                 </DialogPanel>
