@@ -6,6 +6,7 @@ export const FavoritosPage = () => {
 
   const favorites = useAppStore((state) => state.favorites)
   const hasFavorites = useMemo(() => favorites.length, [favorites])
+
   return (
     <>
       <h1 className="text-6xl font-extrabold  mb-4">Favoritos</h1>

@@ -1,5 +1,6 @@
 import { StateCreator } from "zustand"
 import { Recipe } from "../types"
+import { createNotificateSlice } from "./notificateSlice"
 
 
 export type favoritesSlice = {
@@ -19,11 +20,13 @@ export const createFavoritesSlice: StateCreator<favoritesSlice> = (set, get) => 
             set((state) => ({
                 favorites: state.favorites.filter(favorite => favorite.idDrink !== recipe.idDrink)
             }))
+            createNotificateSlice(set).showNotification({ text: "Se elimino Correctamente", error: false })
         } else {
             set((state => ({
                 favorites: [...state.favorites, recipe]
             }))
             )
+            createNotificateSlice(set).showNotification({ text: "Se Agrego  Correctamente", error: false })
         }
 
         localStorage.setItem("favorites", JSON.stringify(get().favorites))
